@@ -1,4 +1,3 @@
-// src/components/breadcrumb/breadcrumb-group--with-circles.stories.tsx
 import type { Meta, StoryObj } from "@storybook/react"
 import { BreadcrumbGroup } from "./breadcrumb-group"
 import { Circle } from "lucide-react"

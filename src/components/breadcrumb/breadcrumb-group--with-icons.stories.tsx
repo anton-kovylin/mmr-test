@@ -1,12 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import { BreadcrumbGroup } from "./breadcrumb-group"
 import {
-  Folder,
-  Users,
-  FileText,
-  MessageSquare,
-  BookOpen,
-  Paperclip,
   Link,
   PanelRightOpen,
   MessageCircleQuestion,

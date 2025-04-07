@@ -12,7 +12,6 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { Separator } from "@/components/ui/separator"
 import { cn } from "@/lib/utils"
 import { useId } from "react"
 import type { LucideIcon } from "lucide-react"
@@ -24,7 +23,8 @@ interface BreadcrumbGroupProps {
     icon?: LucideIcon | false
   }[]
   leadingIcon?: LucideIcon
-  leadingSeparator?: "slash" | "vertical"
+  leadingSeparator?: "slash" | "vertical",
+  trailingIcon?: React.ReactNode
 }
 
 export function BreadcrumbGroup({
