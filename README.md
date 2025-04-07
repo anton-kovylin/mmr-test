@@ -66,7 +66,6 @@ It supports:
   - `height: 40px`, `width: 1376px`, and internal paddings match design.
   - Custom vertical separator: `12px` wide, rotated `-90°`, colored `#E4E4E7`.
 - **Trailing link icon** is rendered outside of the breadcrumb list and flex-aligned using `justify-between`.
-- **Responsiveness:** Items adapt width dynamically based on label length.
 - **Accessibility:**
   - Uses `role="navigation"` and `aria-label="Breadcrumb"`
   - `aria-current` for current item
