@@ -32,6 +32,8 @@ export function BreadcrumbGroup({
   leadingIcon: LeadingIcon,
   leadingSeparator = "slash",
 }: BreadcrumbGroupProps) {
+  const tooltipId = useId();
+
   return (
     <nav
       aria-label="Breadcrumb"
@@ -61,7 +63,6 @@ export function BreadcrumbGroup({
           {items.map((item, idx) => {
             const isLast = idx === items.length - 1
             const showTooltip = item.label.length > 28
-            const tooltipId = useId()
             const Icon = item.icon
 
             return (

@@ -18,6 +18,12 @@ const meta: Meta<typeof BreadcrumbGroup> = {
   component: BreadcrumbGroup,
   parameters: {
     layout: "padded",
+    docs: {
+      description: {
+        component:
+          "The `BreadcrumbGroup` component allows breadcrumb navigation with customizable icons and separators. This version includes leading icons (`leadingIcon`), trailing icons (`trailingIcon`), and supports both slash (`/`) and vertical (`|`) separators. It also includes tooltips for long breadcrumb labels, enhancing accessibility and usability.",
+      },
+    },
   },
 }
 
@@ -70,4 +76,12 @@ export const ExamplesWithIcons: StoryObj<typeof BreadcrumbGroup> = {
       />
     </div>
   ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "These examples demonstrate the flexibility of the `BreadcrumbGroup` component with icons. The component can display breadcrumbs with leading icons (e.g., `PanelRightOpen`) and trailing icons (e.g., `Link`). It supports separators (`|` or `/`) and can handle multiple levels of breadcrumbs. Tooltips are also displayed when labels are truncated.",
+      },
+    },
+  },
 }

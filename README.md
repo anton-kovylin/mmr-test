@@ -36,7 +36,7 @@ npm run dev
 yarn dev
 ```
 
-## Build Storybook (optional)
+## Optional: Build Storybook
 
 ```bash
 npm run build-storybook
