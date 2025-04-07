@@ -1,3 +1,5 @@
+"use client"
+
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -23,7 +25,7 @@ interface BreadcrumbGroupProps {
     icon?: LucideIcon | false
   }[]
   leadingIcon?: LucideIcon
-  leadingSeparator?: "slash" | "vertical",
+  leadingSeparator?: "slash" | "vertical"
   trailingIcon?: React.ReactNode
 }
 
@@ -31,14 +33,13 @@ export function BreadcrumbGroup({
   items,
   leadingIcon: LeadingIcon,
   leadingSeparator = "slash",
+  trailingIcon,
 }: BreadcrumbGroupProps) {
-  const tooltipId = useId();
-
   return (
     <nav
       aria-label="Breadcrumb"
       role="navigation"
-      className="flex items-center justify-between w-[1376px] h-[40px] px-4 border gap-3"
+      className="flex items-center justify-between w-full max-w-[1376px] h-[40px] px-4 border gap-3"
     >
       <Breadcrumb>
         <BreadcrumbList className="flex flex-wrap items-center gap-x-[10px] gap-y-1">
@@ -60,9 +61,11 @@ export function BreadcrumbGroup({
               )}
             </div>
           )}
+
           {items.map((item, idx) => {
             const isLast = idx === items.length - 1
             const showTooltip = item.label.length > 28
+            const tooltipId = useId()
             const Icon = item.icon
 
             return (
@@ -72,16 +75,17 @@ export function BreadcrumbGroup({
                     <Tooltip>
                       <TooltipTrigger asChild>
                         <BreadcrumbLink
-                          href={item?.href || "#"}
+                          href={item.href || "#"}
                           aria-describedby={showTooltip ? tooltipId : undefined}
                           aria-current={isLast ? "page" : undefined}
                           className={cn(
-                            "inline-flex items-center gap-1 truncate px-3 py-1 text-sm font-semibold rounded-md h-[28px]",
-                            "transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#18181B]",
-                            "hover:bg-muted",
-                            "focus:ring-offset-background",
-                           `${isLast ? "font-semibold" : ""}`
-                          )}
+                            "inline-flex items-center gap-1 truncate px-3 py-1 rounded-md text-sm h-[28px]",
+                            "focus:outline-none focus-visible:border-2 focus-visible:border-[#18181B]",
+                            "hover:bg-[#FAFAFA] active:bg-[#F4F4F5]",
+                            isLast
+                              ? "text-gray-700 font-semibold"
+                              : "text-muted-foreground border border-transparent"
+                          )}                                                                        
                         >
                           {Icon && (
                             <Icon
@@ -90,7 +94,7 @@ export function BreadcrumbGroup({
                             />
                           )}
                           <span>
-                            {item.label.length > 28
+                            {showTooltip
                               ? `${item.label.slice(0, 25)}…`
                               : item.label}
                           </span>
@@ -118,10 +122,7 @@ export function BreadcrumbGroup({
         </BreadcrumbList>
       </Breadcrumb>
 
-      <LinkIcon
-        className="w-4 h-4 text-muted-foreground shrink-0 opacity-50"
-        aria-hidden
-      />
+      {trailingIcon && trailingIcon}
     </nav>
   )
 }
