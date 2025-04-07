@@ -76,10 +76,11 @@ export function BreadcrumbGroup({
                           aria-describedby={showTooltip ? tooltipId : undefined}
                           aria-current={isLast ? "page" : undefined}
                           className={cn(
-                            "inline-flex items-center gap-1 truncate border px-3 py-1 rounded-md text-sm focus:outline-none transition-colors h-[28px]",
-                            isLast
-                              ? "border-transparent text-gray-500 hover:text-black hover:bg-gray-100 focus:ring-2 focus:ring-purple-500 font-semibold"
-                              : "border-transparent text-gray-500 hover:text-black hover:bg-gray-100 focus:ring-2 focus:ring-purple-500"
+                            "inline-flex items-center gap-1 truncate px-3 py-1 text-sm font-semibold rounded-md h-[28px]",
+                            "transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#18181B]",
+                            "hover:bg-muted",
+                            "focus:ring-offset-background",
+                           `${isLast ? "font-semibold" : ""}`
                           )}
                         >
                           {Icon && (
