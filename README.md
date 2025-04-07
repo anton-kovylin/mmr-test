@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+### BreadcrumbGroup Component
 
-First, run the development server:
+This is a composable, accessible breadcrumb navigation component designed according to Figma references and built with ShadCN UI and Tailwind CSS.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+It supports:
+
+- Custom leading icons (e.g. folders, users)
+- Vertical or slash separators (based on `leadingSeparator`)
+- Per-item icons (optional)
+- Tooltip for long/truncated labels
+- A trailing link icon 🔗 aligned to the far right (not part of the breadcrumb items)
+- Full accessibility with ARIA roles and keyboard navigation
+- Responsive layout with consistent height (40px) and dynamic width
+
+### Architecture & Design Decisions
+
+- **React Component (`BreadcrumbGroup`)** is isolated inside `src/components/breadcrumb/`, making it reusable and testable.
+- **Separation of Concerns:** UI primitives like `<Breadcrumb>`, `<Tooltip>`, and `<Separator>` are pulled from `@/components/ui/`, following ShadCN conventions.
+- **Layout Fidelity:** The component adheres strictly to Figma specs:
+  - `height: 40px`, `width: 1376px`, and internal paddings match design.
+  - Custom vertical separator: `12px` wide, rotated `-90°`, colored `#E4E4E7`.
+- **Trailing link icon (`🔗`)** is rendered outside of the breadcrumb list and flex-aligned using `justify-between`.
+- **Responsiveness:** Items adapt width dynamically based on label length.
+- **Accessibility:**
+  - Uses `role="navigation"` and `aria-label="Breadcrumb"`
+  - `aria-current` for current item
+  - `aria-describedby` for tooltips on truncated labels
+
+### Storybook Stories
+
+The following variants are available in Storybook:
+
+- One-level, two-level, three-level breadcrumbs
+- With/without leading icon
+- Slash / vertical / first vertical separator
+- Active, hover, focus states (visually observable via Tailwind)
+- Truncated long labels with tooltips
+- Trailing link icon aligned separately
+
+All stories are grouped by category and follow consistent naming.
+
+### Props
+
+```ts
+interface BreadcrumbGroupProps {
+  items: {
+    label: string
+    href?: string
+    icon?: LucideIcon | false
+  }[]
+  leadingIcon?: LucideIcon
+  leadingSeparator?: "slash" | "vertical"
+}
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- items: The breadcrumb path
+- leadingIcon: An icon before the list (e.g. Folder)
+- leadingSeparator: "slash" or "vertical" between leading icon and items
