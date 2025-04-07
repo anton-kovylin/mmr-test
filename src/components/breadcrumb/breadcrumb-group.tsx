@@ -28,6 +28,17 @@ interface BreadcrumbGroupProps {
   trailingIcon?: React.ReactNode
 }
 
+const Separator = () => {
+  return (
+    <BreadcrumbSeparator>
+      <Slash
+        className="w-[6.67px] h-[12px] text-[#71717A] mt-[2px] ml-[4.67px]"
+        aria-hidden
+      />
+    </BreadcrumbSeparator>
+  )
+}
+
 export function BreadcrumbGroup({
   items,
   leadingIcon: LeadingIcon,
@@ -45,7 +56,7 @@ export function BreadcrumbGroup({
           {LeadingIcon && (
             <div className="flex items-center gap-x-[10px]">
               <LeadingIcon
-                className="h-4 w-4 text-muted-foreground shrink-0"
+                className={cn("w-4 h-4 shrink-0", "text-[#18181B]")}
                 aria-hidden
               />
               {leadingSeparator === "vertical" ? (
@@ -54,9 +65,7 @@ export function BreadcrumbGroup({
                   aria-hidden
                 />
               ) : (
-                <BreadcrumbSeparator>
-                  <Slash className="w-4 h-4 text-muted-foreground" aria-hidden />
-                </BreadcrumbSeparator>
+                <Separator />
               )}
             </div>
           )}
@@ -79,12 +88,12 @@ export function BreadcrumbGroup({
                           aria-current={isLast ? "page" : undefined}
                           className={cn(
                             "inline-flex items-center gap-1 truncate px-3 py-1 rounded-md text-sm h-[28px]",
-                            "focus:outline-none focus:ring-0 focus:border-2 focus:border-[#18181B]",
+                            "focus-visible:outline-none focus-visible:border-2 focus-visible:border-[#18181B]",
                             "hover:bg-[#FAFAFA] active:bg-[#F4F4F5]",
                             isLast
                               ? "text-gray-700 font-semibold"
-                              : "text-muted-foreground border border-transparent"
-                          )}                                                                         
+                              : "text-muted-foreground"
+                          )}
                         >
                           {Icon && (
                             <Icon
@@ -111,9 +120,7 @@ export function BreadcrumbGroup({
                 </BreadcrumbItem>
 
                 {idx < items.length - 1 && (
-                  <BreadcrumbSeparator>
-                    <Slash className="w-4 h-4 text-muted-foreground" aria-hidden />
-                  </BreadcrumbSeparator>
+                  <Separator />
                 )}
               </div>
             )
