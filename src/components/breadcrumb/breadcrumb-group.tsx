@@ -7,7 +7,7 @@ import {
   BreadcrumbLink,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
-import { Slash, Link as LinkIcon } from "lucide-react"
+import { Slash } from "lucide-react"
 import {
   Tooltip,
   TooltipContent,
@@ -15,7 +15,6 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { cn } from "@/lib/utils"
-import { useId } from "react"
 import type { LucideIcon } from "lucide-react"
 
 interface BreadcrumbGroupProps {
@@ -65,8 +64,8 @@ export function BreadcrumbGroup({
           {items.map((item, idx) => {
             const isLast = idx === items.length - 1
             const showTooltip = item.label.length > 28
-            const tooltipId = useId()
             const Icon = item.icon
+            const uniqueTooltipId = `tooltip-${idx}`
 
             return (
               <div className="flex items-center gap-x-[10px]" key={idx}>
@@ -76,16 +75,16 @@ export function BreadcrumbGroup({
                       <TooltipTrigger asChild>
                         <BreadcrumbLink
                           href={item.href || "#"}
-                          aria-describedby={showTooltip ? tooltipId : undefined}
+                          aria-describedby={showTooltip ? uniqueTooltipId : undefined}
                           aria-current={isLast ? "page" : undefined}
                           className={cn(
                             "inline-flex items-center gap-1 truncate px-3 py-1 rounded-md text-sm h-[28px]",
-                            "focus:outline-none focus-visible:border-2 focus-visible:border-[#18181B]",
+                            "focus:outline-none focus:ring-0 focus:border-2 focus:border-[#18181B]",
                             "hover:bg-[#FAFAFA] active:bg-[#F4F4F5]",
                             isLast
                               ? "text-gray-700 font-semibold"
                               : "text-muted-foreground border border-transparent"
-                          )}                                                                        
+                          )}                                                                         
                         >
                           {Icon && (
                             <Icon
@@ -101,7 +100,7 @@ export function BreadcrumbGroup({
                         </BreadcrumbLink>
                       </TooltipTrigger>
                       {showTooltip && (
-                        <TooltipContent id={tooltipId} role="tooltip">
+                        <TooltipContent id={uniqueTooltipId} role="tooltip">
                           <span className="block max-w-[300px] whitespace-normal text-xs">
                             {item.label}
                           </span>
