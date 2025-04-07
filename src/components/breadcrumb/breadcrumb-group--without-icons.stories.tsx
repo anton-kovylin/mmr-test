@@ -16,7 +16,7 @@ const meta: Meta<typeof BreadcrumbGroup> = {
 export default meta
 
 export const BreadcrumbExamples: StoryObj<typeof BreadcrumbGroup> = {
-  name: "Breadcrumb Examples (Without Icons)",
+  name: "Levels 1-3",
   render: () => (
     <div className="space-y-6 p-6">
       <BreadcrumbGroup
