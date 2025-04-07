@@ -1,5 +1,50 @@
 
-### BreadcrumbGroup Component
+# Breadcrumb Group Component with Storybook
+
+This repository contains the `BreadcrumbGroup` component, built with **Next.js**, **Tailwind CSS**, and **ShadCN UI**. It supports customizable breadcrumb navigation with icons, separators, tooltips, and accessibility features.
+
+---
+
+## Getting Started (Local Setup)
+
+Follow these steps to run the project and Storybook locally on your machine.
+
+### Install Dependencies
+
+Using **npm**:
+
+```bash
+npm install
+```
+
+### Run Storybook
+
+```bash
+npm run storybook
+```
+Once Storybook is running, access it at:
+
+```bash
+http://localhost:6006
+```
+
+## Optional: Run Next.js Dev Server
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+## Build Storybook (optional)
+
+```bash
+npm run build-storybook
+```
+
+---
+
+### BreadcrumbGroup Component Overview
 
 This is a composable, accessible breadcrumb navigation component designed according to Figma references and built with ShadCN UI and Tailwind CSS.
 
@@ -56,47 +101,3 @@ interface BreadcrumbGroupProps {
 - items: The breadcrumb path
 - leadingIcon: An icon before the list (e.g. Folder)
 - leadingSeparator: "slash" or "vertical" between leading icon and items
-
-# Breadcrumb Group Component with Storybook
-
-This repository contains the `BreadcrumbGroup` component, built with **Next.js**, **Tailwind CSS**, and **ShadCN UI**. It supports customizable breadcrumb navigation with icons, separators, tooltips, and accessibility features.
-
----
-
-## Getting Started (Local Setup)
-
-Follow these steps to run the project and Storybook locally on your machine.
-
-### Install Dependencies
-
-Using **npm**:
-
-```bash
-npm install
-```
-
-### Run Storybook
-
-```bash
-npm run storybook
-```
-Once Storybook is running, access it at:
-
-```bash
-http://localhost:6006
-```
-
-## Optional: Run Next.js Dev Server
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-## Build Storybook (optional)
-
-```bash
-npm run build-storybook
-```
-
