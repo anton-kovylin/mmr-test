@@ -20,7 +20,7 @@ It supports:
 - **Layout Fidelity:** The component adheres strictly to Figma specs:
   - `height: 40px`, `width: 1376px`, and internal paddings match design.
   - Custom vertical separator: `12px` wide, rotated `-90°`, colored `#E4E4E7`.
-- **Trailing link icon (`🔗`)** is rendered outside of the breadcrumb list and flex-aligned using `justify-between`.
+- **Trailing link icon** is rendered outside of the breadcrumb list and flex-aligned using `justify-between`.
 - **Responsiveness:** Items adapt width dynamically based on label length.
 - **Accessibility:**
   - Uses `role="navigation"` and `aria-label="Breadcrumb"`
@@ -56,3 +56,47 @@ interface BreadcrumbGroupProps {
 - items: The breadcrumb path
 - leadingIcon: An icon before the list (e.g. Folder)
 - leadingSeparator: "slash" or "vertical" between leading icon and items
+
+# Breadcrumb Group Component with Storybook
+
+This repository contains the `BreadcrumbGroup` component, built with **Next.js**, **Tailwind CSS**, and **ShadCN UI**. It supports customizable breadcrumb navigation with icons, separators, tooltips, and accessibility features.
+
+---
+
+## Getting Started (Local Setup)
+
+Follow these steps to run the project and Storybook locally on your machine.
+
+### Install Dependencies
+
+Using **npm**:
+
+```bash
+npm install
+```
+
+### Run Storybook
+
+```bash
+npm run storybook
+```
+Once Storybook is running, access it at:
+
+```bash
+http://localhost:6006
+```
+
+## Optional: Run Next.js Dev Server
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+## Build Storybook (optional)
+
+```bash
+npm run build-storybook
+```
+
